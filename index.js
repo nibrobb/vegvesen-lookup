@@ -33,24 +33,24 @@ app.get('/lookup', async (request, response) => {
 
 
 async function oppslag(kjennemerke) {
-	let kjoretoy = null;
-	let url = 'https://www.vegvesen.no/ws/no/vegvesen/kjoretoy/felles/datautlevering/enkeltoppslag/kjoretoydata?kjennemerke=' + kjennemerke;
+    let kjoretoy = null;
+    let url = 'https://www.vegvesen.no/ws/no/vegvesen/kjoretoy/felles/datautlevering/enkeltoppslag/kjoretoydata?kjennemerke=' + kjennemerke;
 
     let api_key = await readFile('./api.key');
-	let headers = {
-			"SVV-Authorization": "Apikey " + api_key
-		};
+    let headers = {
+            "SVV-Authorization": "Apikey " + api_key
+        };
 
     console.log('Kaller REST-tjeneste: ' + url);
-	let response = await fetch(url, { method: "GET", headers: headers });
+    let response = await fetch(url, { method: "GET", headers: headers });
 
-	console.log('HTTP Status: ' + response.status + ' (' + response.statusText + ')');
+    console.log('HTTP Status: ' + response.status + ' (' + response.statusText + ')');
 
-	if (response.status === 200) {
-		kjoretoy = await response.json();
-	}
+    if (response.status === 200) {
+        kjoretoy = await response.json();
+    }
 
-	return kjoretoy;
+    return kjoretoy;
 }
 
 function parseURLParams(url) {
@@ -73,4 +73,4 @@ function parseURLParams(url) {
     return parms;
 }
 
-app.listen(process.env.PORT || 3000, () => console.log('App available at http://localhost:3000'));
+app.listen(process.env.PORT || 4000, () => console.log('App available at http://localhost:4000'));
