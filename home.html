@@ -7,15 +7,25 @@
     <title>Hello World</title>
 </head>
 <body>
-    <div style="margin:auto;width: 50%">
-        <form action="/lookup" method="GET">
-            <span>Skriv inn kjennemerke: </span>
-            <input type="text" name="kjennemerke" placeholder="AB12345">
-            <input type="submit" value="Søk">
-        </form>
-    </div>
-    <div id="result_container" style="margin:auto;width:500px;height:500px;">
-        
-    </div>
+    <main>
+        <div style="margin:auto; width:50%; margin-bottom:1rem;">
+            <form id="form" style="text-align: center">
+                <span>Skriv inn kjennemerke: </span>
+                <input type="text" id="registreringsnummer" name="registreringsnummer" maxlength="18" autofocus placeholder="F.eks. AB 12345">
+                <input type="submit" value="Hent opplysninger">
+            </form>
+        </div>
+        <div id="result_container" style="margin:auto; width:50vw; height:50vw; outline:auto;">
+            content
+        </div>
+        <script>
+            var form = document.getElementById('form');
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // prevents form from autosubmitting (refresh page and submit(?))
+                var kjennemerke = document.getElementById('registreringsnummer').value;
+                console.log('Kjennemerke: ' + kjennemerke);
+            });
+        </script>
+    </main>
 </body>
 </html>

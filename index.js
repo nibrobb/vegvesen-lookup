@@ -20,14 +20,9 @@ app.get('/lookup', async (request, response) => {
     let params = parseURLParams(request.url);
     let kjennemerke = params.kjennemerke;
     let kjoretoy = await oppslag(kjennemerke);
-    // let kjoretoy = { name: 'john' }
 
-    // let asdf = JSON.stringify(kjoretoy, null, 4);
-    // let content = vkbeautify.json(asdf, 4);
-
-    response.header("Content-Type",'application/json');
+    //response.header("Content-Type",'application/json');
     response.send(JSON.stringify(kjoretoy, null, 4));
-    // response.send( await readFile('./home.html', 'utf-8') );
 });
 
 
@@ -54,7 +49,7 @@ async function oppslag(kjennemerke) {
 }
 
 function parseURLParams(url) {
-    var queryStart = url.indexOf("?") + 1,
+    let queryStart = url.indexOf("?") + 1,
         queryEnd   = url.indexOf("#") + 1 || url.length + 1,
         query = url.slice(queryStart, queryEnd - 1),
         pairs = query.replace(/\+/g, " ").split("&"),
